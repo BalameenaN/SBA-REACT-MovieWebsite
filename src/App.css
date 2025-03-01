@@ -1,0 +1,55 @@
+.img {
+
+    width: 10%;
+    height: 10%;
+    margin: 0;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.header-container {
+    display: flex;
+
+}
+
+.header-container>input {
+    border: 1px solid grey;
+    margin-left: 50px;
+}
+
+.header-right p {
+    margin: 5px 5px;
+}
+
+.header-right img {
+    margin: 5px 5px;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    align-items: center;
+
+}
+
+.list {
+    border: 1px solid red;
+    margin: 10px 10px;
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.list img {
+    width: 200px;
+
+}
