@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './Header'
 import Leftpanel from './components/Leftpanel'
-import TopPanel from './components/Toppanel'
+
 
 function App() {
 
@@ -12,8 +12,8 @@ function App() {
     <>
      <Header />
      <div className='top-panel'>
-     <TopPanel type={"genres"}/>
-     <TopPanel type={"languages"}/>
+     
+     
      </div>
      <Leftpanel />
 

@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import Select from '../components/Select';
 
-export default function TopPanel({type}){
 
-    console.log(type);
+export default function TopPanel({type,fn,genOpt}){
+
+    //console.log(type);
 
     const[genre, setGenre] = useState([]);
+   
 
     async function getGenre() {
         console.log("inside getGenre");
         const url = `https://imdb236.p.rapidapi.com/imdb/${type}`;
-        console.log(url);
+        //console.log(url);
         const options = {
             method: 'GET',
             headers: {
@@ -33,13 +34,25 @@ export default function TopPanel({type}){
         getGenre();
     },[]);
 
+    function handleChange(e){
+        console.log("inside handle function");
+         fn(e.target.value);
+         //console.log(genOpt);
+    }
+
     return(
        <>
-        <select name={type} id={type}>
+        <select value={genOpt} name={type} id={type} onChange={handleChange}>
+        <option value="">Select {type}</option>    
+           
        {type == "languages" ? genre.map((g)=>(
+        <>
         <option value={g.name}>{g.name}</option>
-       )): genre.map((g)=>(
+        </>
+         )): genre.map((g)=>(
+        <>
         <option value={g}>{g}</option>
+        </>
        ))}
        </select>
        </>

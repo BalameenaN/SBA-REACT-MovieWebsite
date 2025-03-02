@@ -1,5 +1,7 @@
 import { Link, Routes, Route } from "react-router-dom"
 import {useEffect, useState} from 'react'
+import TopPanel from './Toppanel'
+
 
 export default function Leftpanel() {
       console.log('inside Leftpanel');
@@ -62,6 +64,8 @@ function Allfilm() {
 
     return (
         <>
+        <TopPanel type={"genres"}/>
+        <TopPanel type={"languages"}/>
         <div className="container">
             {movieList}   
         </div>
@@ -71,6 +75,7 @@ function Allfilm() {
 
 function Tvshow() {
     const [tvShow, setTvShow] = useState([]);
+    const [genOpt, setGenOpt] = useState("");
 
     async function getShow() {
         console.log("inside async");
@@ -97,19 +102,41 @@ function Tvshow() {
         getShow();
     },[]);
 
+    function listing(l){
+        const val = l.genres;
+        if(val.includes(genOpt)){
+             return(
+                <>
+                <div className="list">
+                    <img src={l.primaryImage} />
+                    <p>{l.originalTitle}</p>
+                </div>
+                </>
+             )
+        }
+    }
+
     const showList = tvShow.map((t)=>{
         return(
-            <div className="list">
+            <>
+            {(genOpt!="")? listing(t): <div className="list">
                 <img src={t.primaryImage} />
                 <p>{t.originalTitle}</p>
-            </div>
+            </div>}
+            
+            </>
         )
     })
 
-
+   
     return (
+        <>
+        <TopPanel type={"genres"} fn={setGenOpt} genOpt={genOpt}/>
+        <TopPanel type={"languages"}/>
         <div className="container">
+            {/*{genOpt != "" ? showList.flatmap((s)=> s.genres).filter((g)=> )}*/}
             {showList}
         </div>
+        </>
     )
 }
