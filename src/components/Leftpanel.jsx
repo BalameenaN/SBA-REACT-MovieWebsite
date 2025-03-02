@@ -134,7 +134,6 @@ function Tvshow() {
         <TopPanel type={"genres"} fn={setGenOpt} genOpt={genOpt}/>
         <TopPanel type={"languages"}/>
         <div className="container">
-            {/*{genOpt != "" ? showList.flatmap((s)=> s.genres).filter((g)=> )}*/}
             {showList}
         </div>
         </>
