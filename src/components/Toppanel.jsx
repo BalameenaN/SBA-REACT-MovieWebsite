@@ -15,7 +15,7 @@ export default function TopPanel({type,fn,genOpt}){
         const options = {
             method: 'GET',
             headers: {
-                'x-rapidapi-key': '290b91e8demsh7e995a4d089dc6ep1aa7c8jsn782fd24c33d7',
+                'x-rapidapi-key': '6593e3c408msh0725bf29aa2cc1ap179f86jsn3715aef84ede',
                 'x-rapidapi-host': 'imdb236.p.rapidapi.com'
             }
         };
