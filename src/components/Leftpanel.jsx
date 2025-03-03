@@ -5,6 +5,7 @@ import Watchlist from './Watchlist'
 import { WatchContext } from '../App'
 
 
+
 export default function Leftpanel({film, setFilm}) {
 
     console.log('inside Leftpanel');
@@ -25,18 +26,17 @@ export default function Leftpanel({film, setFilm}) {
             <Routes>
                 <Route path="/all" element={<Allfilm film={film} setFilm={setFilm}/>} />
                 <Route path="/Tvshows" element={<Tvshow />} />
-                <Route path="/Watchlist" element={<Watchlist />} />
+                <Route path="/Watchlist" element={<Watchlist film={film} setFilm={setFilm}/>} />
             </Routes>
         </>
     )
 }
 
-function Allfilm() {
-    const [film, setFilm] = useState([]);
+function Allfilm({film , setFilm}) {
     const [movOpt, setMovOpt] = useState("");
     const { watchList, dispatch } = useContext(WatchContext);
 
-    async function getFilm() {
+   /* async function getFilm() {
         console.log("inside async");
         const url = 'https://imdb236.p.rapidapi.com/imdb/top250-movies';
         const options = {
@@ -60,7 +60,7 @@ function Allfilm() {
     useEffect(() => {
         console.log("inside effect");
         getFilm();
-    }, []);
+    }, []);*/
 
     function listing(l) {
         const val = l.genres;
