@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { WatchContext } from '../App'
 
-export default function Watchlist({film, setFilm}){
+export default function Watchlist({film, setFilm, tvShow, setTvShow}){
        const { watchList, dispatch } = useContext(WatchContext);
-       console.log(film);
+       console.log(tvShow);
        console.log(watchList);
 
        function removefavHandle(id){
@@ -12,6 +12,7 @@ export default function Watchlist({film, setFilm}){
 
        }
        
+       //filtering the required film from all the film
        const filteredList = film.map((f)=>{
         return(
             <>
@@ -24,9 +25,23 @@ export default function Watchlist({film, setFilm}){
         )
        })
 
+        //filtering the required show from all the show
+       const filteredShow = tvShow.map((t)=>{
+        return(
+            <>
+            {(watchList.watchItems.includes(t.id)) ? <div className="list">
+                    <img src={t.primaryImage} />
+                    <p>{t.originalTitle}</p>
+                    <button className="favourite" onClick={()=> removefavHandle(t.id)}>Remove</button>
+                </div> :" "}
+            </>
+        )
+       })
+
     return(
         <>
           {filteredList}
+          {filteredShow}
         </>
     )
 }

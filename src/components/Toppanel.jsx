@@ -6,8 +6,8 @@ export default function TopPanel({type,fn,genOpt}){
     //console.log(type);
 
     const[genre, setGenre] = useState([]);
-   
 
+    //Generic function to fetch list of genres and language from API
     async function getGenre() {
         console.log("inside getGenre");
         const url = `https://imdb236.p.rapidapi.com/imdb/${type}`;
