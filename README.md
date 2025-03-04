@@ -18,4 +18,4 @@ Currently, two official plugins are available:
 - Createe state variable using **useState, useReducer** to maintain the values between different pages.
 - **prop drilling** is avoided in some case, by adding **useContext** hook.
 - Designed dynamic website using **React** hooks.
-- Website is deployed using **Netlify** and the deployed link is:
+- Website is deployed using **Netlify** and the deployed link is: **https://moviehub-bm.netlify.app/**
