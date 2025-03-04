@@ -16,7 +16,7 @@ export default function Watchlist({ film, setFilm, tvShow, setTvShow }) {
     const filteredList = film.map((f) => {
         return (
             <>
-                {(watchList.watchItems.includes(f.id)) ? <div className="list">
+                {(watchList.watchItems.includes(f.id)) ? <div key={f.id} className="list">
                     <img className="image" src={f.primaryImage} />
                     <p>{f.originalTitle}</p>
                     <button className="favourite" onClick={() => removefavHandle(f.id)}>Remove</button>
@@ -29,7 +29,7 @@ export default function Watchlist({ film, setFilm, tvShow, setTvShow }) {
     const filteredShow = tvShow.map((t) => {
         return (
             <>
-                {(watchList.watchItems.includes(t.id)) ? <div className="list">
+                {(watchList.watchItems.includes(t.id)) ? <div key={t.id} className="list">
                     <img className="image" src={t.primaryImage} />
                     <p>{t.originalTitle}</p>
                     <button className="favourite" onClick={() => removefavHandle(t.id)}>Remove</button>

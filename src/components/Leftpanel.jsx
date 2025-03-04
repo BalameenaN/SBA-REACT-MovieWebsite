@@ -52,7 +52,7 @@ function Allfilm({ film, setFilm }) {
 
         return (
             <>
-                <div className="list-container">
+                <div key={t.id} className="list-container">
                     <div className="list">
                         <img className="image" src={t.primaryImage} />
                         <h4>{t.originalTitle}</h4>
@@ -95,7 +95,7 @@ function Tvshow({ tvShow, setTvShow }) {
 
         return (
             <>
-                <div className="list-container">
+                <div key={t.id} className="list-container">
                     <div className="list">
                         <img className="image" src={t.primaryImage} />
                         <h4>{t.originalTitle}</h4>

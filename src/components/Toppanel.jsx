@@ -15,7 +15,7 @@ export default function TopPanel({ type, fn, genOpt }) {
         const options = {
             method: 'GET',
             headers: {
-                'x-rapidapi-key': '6593e3c408msh0725bf29aa2cc1ap179f86jsn3715aef84ede',
+                'x-rapidapi-key': 'eb680fb08amsh9050dcef2abe80bp1c0635jsnb9a0e7859341',
                 'x-rapidapi-host': 'imdb236.p.rapidapi.com'
             }
         };
@@ -42,7 +42,7 @@ export default function TopPanel({ type, fn, genOpt }) {
 
     return (
         <>
-            <select className="select-container" value={genOpt} name={type} id={type} onChange={handleChange}>
+            <select className="select-container" key={type} value={genOpt} name={type} id={type} onChange={handleChange}>
                 <option value="">Select {type}</option>
 
                 {type == "languages" ? genre.map((g) => (
@@ -51,7 +51,7 @@ export default function TopPanel({ type, fn, genOpt }) {
                     </>
                 )) : genre.map((g) => (
                     <>
-                        <option value={g}>{g}</option>
+                        <option key={g.id} value={g}>{g}</option>
                     </>
                 ))}
             </select>

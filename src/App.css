@@ -143,3 +143,7 @@ body {
 .watchlist{
     text-align: center;
 }
+.links:hover{
+    background-color: white;
+    color: pink;
+}
