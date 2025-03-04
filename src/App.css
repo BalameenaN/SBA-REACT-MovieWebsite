@@ -53,8 +53,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .image {
@@ -75,7 +75,7 @@ body {
 }
 
 .drop-down {
-    border: 1px solid red;
+
     text-align: center;
     padding: 5px 5px;
     margin-bottom: 10px;
@@ -91,7 +91,7 @@ body {
 
     text-align: center;
     width: 150px;
-    margin-top: 50px;
+    margin-top: 100px;
 
 }
 
@@ -138,4 +138,8 @@ body {
     color: white;
     text-decoration: none;
 
+}
+
+.watchlist{
+    text-align: center;
 }

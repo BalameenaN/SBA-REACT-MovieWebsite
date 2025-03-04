@@ -85,7 +85,7 @@ function Allfilm({ film, setFilm }) {
                     <div className="list">
                         <img className="image" src={t.primaryImage} />
                         <h4>{t.originalTitle}</h4>
-                        <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
+                        <button className="favourite" onClick={() => moviefavHandle(t.id)}>Add to watchlist</button>
                     </div>
                 </div>
             </>
@@ -216,8 +216,10 @@ function Tvshow({ tvShow, setTvShow }) {
     return (
         <>
             <div className="toppanel">
-                <TopPanel type={"genres"} fn={setGenOpt} genOpt={genOpt} />
-                <TopPanel type={"languages"} />
+                <div className="drop-down">
+                    <TopPanel type={"genres"} fn={setGenOpt} genOpt={genOpt} />
+                    <TopPanel type={"languages"} />
+                </div>
                 <div className="container">
                     {showList}
                 </div>

@@ -16,7 +16,6 @@ export default function Watchlist({ film, setFilm, tvShow, setTvShow }) {
     const filteredList = film.map((f) => {
         return (
             <>
-                <h3>Your watchlist</h3>
                 {(watchList.watchItems.includes(f.id)) ? <div className="list">
                     <img className="image" src={f.primaryImage} />
                     <p>{f.originalTitle}</p>
@@ -41,8 +40,15 @@ export default function Watchlist({ film, setFilm, tvShow, setTvShow }) {
 
     return (
         <>
-            {filteredList}
-            {filteredShow}
+            <div className='watchlist'>
+                <div>
+                    <h2>WATCHLIST</h2>
+                </div>
+                <div className='container'>
+                    {filteredList}
+                    {filteredShow}
+                </div>
+            </div>
         </>
     )
 }
