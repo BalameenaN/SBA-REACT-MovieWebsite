@@ -39,41 +39,12 @@ function Allfilm({ film, setFilm }) {
     const [movOpt, setMovOpt] = useState("");
     const { watchList, dispatch } = useContext(WatchContext);
 
-    //function for displaying only the selected genre
-    function listing(l) {
-        const val = l.genres;
-        if (val.includes(movOpt)) {
-            return (
-                <>
-                    <div className="list">
-                        <img src={l.primaryImage} />
-                        <h4>{l.originalTitle}</h4>
-                        <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
-                    </div>
-                </>
-            )
-        }
-    }
 
     function moviefavHandle(id) {
 
         dispatch({ type: "ADD", payload: id });
 
     }
-
-    /* const movieList = film.map((f) => {
-         return (
-             <>
-                 <div className="list-container">
-                     {(movOpt != "") ? listing(f) : <div className="list">
-                         <img src={f.primaryImage} />
-                         <h4>{f.originalTitle}</h4>
-                         <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
-                     </div>}
-                 </div>
-             </>
-         )
-     })*/
 
     const filtered = film.filter((t) => t.genres.includes(movOpt));
 
@@ -117,84 +88,6 @@ function Tvshow({ tvShow, setTvShow }) {
         dispatch({ type: "ADD", payload: id });
     }
 
-
-
-    //function for displaying only the selected genre
-    /* function listing(l) {
-         const val = l.genres;
-         
-             return (
-                 <>
-                  {(val.includes(genOpt))?<div className="list">
-                         <img src={l.primaryImage} />
-                         <h4>{l.originalTitle}</h4>
-                         <button className="favourite" onClick={() => tvfavHandle(l.id)}>Add to watchlist</button>
-                     </div> : <></>} 
-                 </>
-             )
-         
-     }
- 
-     const showList = tvShow.map((t) => {
- 
-         return (
-             <>
-                  <div className="list-container">
-                 {(genOpt != "") ? listing(t) : <div className="list">
-                     <img src={t.primaryImage} />
-                     <h4>{t.originalTitle}</h4>
-                     <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
-                 </div>}
-                 </div>
-             </>
-         )
-     })*/
-
-    /*function filteringShow(){
-   
-       const filtered = tvShow.filter((t)=> t.genres.includes(genOpt));
-   
-       if(genOpt != ""){
-            
-            console.log("inside if function");
-            console.log(genOpt);
-            const showList = filtered.map((t) => {
-   
-               return (
-                   <>
-                        <div className="list-container">
-                        <div className="list">
-                           <img src={t.primaryImage} />
-                           <h4>{t.originalTitle}</h4>
-                           <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
-                       </div>
-                       </div>
-                   </>
-               )
-           })
-          return showList;         
-           
-       } else{
-           console.log("inside else function");
-           const showList = tvShow.map((t) => {
-   
-               return (
-                   <>
-                        <div className="list-container">
-                        <div className="list">
-                           <img src={t.primaryImage} />
-                           <h4>{t.originalTitle}</h4>
-                           <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
-                       </div>
-                       </div>
-                   </>
-               )
-           })
-          return showList;  
-   
-       }
-   
-   }*/
 
     const filtered = tvShow.filter((t) => t.genres.includes(genOpt));
 
