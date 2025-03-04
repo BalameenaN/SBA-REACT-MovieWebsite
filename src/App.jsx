@@ -79,9 +79,9 @@ function App() {
     <>
       <WatchContext.Provider value={{ watchList, dispatch }}>
         <Header />
-        <div className='top-panel'>
-        </div>
+        <div className='main-container'>
         <Leftpanel film={film} setFilm={setFilm} tvShow={tvShow} setTvShow={setTvShow} />
+        </div>
       </WatchContext.Provider>
     </>
 

@@ -10,22 +10,26 @@ export default function Leftpanel({ film, setFilm, tvShow, setTvShow }) {
     return (
         <>
             <nav>
-                <Link to='/all'>
-                    <div>All Films</div>
-                </Link>
-                <Link to='/Tvshows'>
-                    <div>Tv shows</div>
-                </Link>
-                <Link to='/Watchlist'>
-                    <div>Watchlist</div>
-                </Link>
+                <div className="leftpanel">
+                    <Link className="links" to='/all'>
+                        <h4 >Films</h4>
+                    </Link>
+                    <Link className="links" to='/Tvshows'>
+                        <h4>Tv shows</h4>
+                    </Link>
+                    <Link className="links" to='/Watchlist'>
+                        <h4>Watchlist</h4>
+                    </Link>
+                </div>
             </nav>
+
 
             <Routes>
                 <Route path="/all" element={<Allfilm film={film} setFilm={setFilm} />} />
                 <Route path="/Tvshows" element={<Tvshow tvShow={tvShow} setTvShow={setTvShow} />} />
                 <Route path="/Watchlist" element={<Watchlist film={film} setFilm={setFilm} tvShow={tvShow} setTvShow={setTvShow} />} />
             </Routes>
+
         </>
     )
 }
@@ -43,7 +47,7 @@ function Allfilm({ film, setFilm }) {
                 <>
                     <div className="list">
                         <img src={l.primaryImage} />
-                        <p>{l.originalTitle}</p>
+                        <h4>{l.originalTitle}</h4>
                         <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
                     </div>
                 </>
@@ -60,22 +64,25 @@ function Allfilm({ film, setFilm }) {
     const movieList = film.map((f) => {
         return (
             <>
-                {(movOpt != "") ? listing(f) : <div className="list">
-                    <img src={f.primaryImage} />
-                    <p>{f.originalTitle}</p>
-                    <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
-                </div>}
-
+                <div className="list-container">
+                    {(movOpt != "") ? listing(f) : <div className="list">
+                        <img src={f.primaryImage} />
+                        <h4>{f.originalTitle}</h4>
+                        <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
+                    </div>}
+                </div>
             </>
         )
     })
 
     return (
         <>
-            <TopPanel type={"genres"} fn={setMovOpt} genOpt={movOpt} />
-            <TopPanel type={"languages"} />
-            <div className="container">
-                {movieList}
+            <div className="toppanel">
+                <TopPanel type={"genres"} fn={setMovOpt} genOpt={movOpt} />
+                <TopPanel type={"languages"} />
+                <div className="container">
+                    {movieList}
+                </div>
             </div>
         </>
     )
@@ -89,42 +96,111 @@ function Tvshow({ tvShow, setTvShow }) {
     function tvfavHandle(id) {
         dispatch({ type: "ADD", payload: id });
     }
-    
-    //function for displaying only the selected genre
-    function listing(l) {
-        const val = l.genres;
-        if (val.includes(genOpt)) {
-            return (
-                <>
-                    <div className="list">
-                        <img src={l.primaryImage} />
-                        <p>{l.originalTitle}</p>
-                        <button className="favourite" onClick={() => tvfavHandle(l.id)}>Add to watchlist</button>
-                    </div>
-                </>
-            )
-        }
-    }
 
-    const showList = tvShow.map((t) => {
+
+
+    //function for displaying only the selected genre
+    /* function listing(l) {
+         const val = l.genres;
+         
+             return (
+                 <>
+                  {(val.includes(genOpt))?<div className="list">
+                         <img src={l.primaryImage} />
+                         <h4>{l.originalTitle}</h4>
+                         <button className="favourite" onClick={() => tvfavHandle(l.id)}>Add to watchlist</button>
+                     </div> : <></>} 
+                 </>
+             )
+         
+     }
+ 
+     const showList = tvShow.map((t) => {
+ 
+         return (
+             <>
+                  <div className="list-container">
+                 {(genOpt != "") ? listing(t) : <div className="list">
+                     <img src={t.primaryImage} />
+                     <h4>{t.originalTitle}</h4>
+                     <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
+                 </div>}
+                 </div>
+             </>
+         )
+     })*/
+
+    /*function filteringShow(){
+   
+       const filtered = tvShow.filter((t)=> t.genres.includes(genOpt));
+   
+       if(genOpt != ""){
+            
+            console.log("inside if function");
+            console.log(genOpt);
+            const showList = filtered.map((t) => {
+   
+               return (
+                   <>
+                        <div className="list-container">
+                        <div className="list">
+                           <img src={t.primaryImage} />
+                           <h4>{t.originalTitle}</h4>
+                           <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
+                       </div>
+                       </div>
+                   </>
+               )
+           })
+          return showList;         
+           
+       } else{
+           console.log("inside else function");
+           const showList = tvShow.map((t) => {
+   
+               return (
+                   <>
+                        <div className="list-container">
+                        <div className="list">
+                           <img src={t.primaryImage} />
+                           <h4>{t.originalTitle}</h4>
+                           <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
+                       </div>
+                       </div>
+                   </>
+               )
+           })
+          return showList;  
+   
+       }
+   
+   }*/
+
+    const filtered = tvShow.filter((t) => t.genres.includes(genOpt));
+
+    const showList = (((genOpt != "")) ? filtered : tvShow).map((t) => {
+
         return (
             <>
-                {(genOpt != "") ? listing(t) : <div className="list">
-                    <img src={t.primaryImage} />
-                    <p>{t.originalTitle}</p>
-                    <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
-                </div>}
-
+                <div className="list-container">
+                    <div className="list">
+                        <img src={t.primaryImage} />
+                        <h4>{t.originalTitle}</h4>
+                        <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
+                    </div>
+                </div>
             </>
         )
     })
 
     return (
         <>
-            <TopPanel type={"genres"} fn={setGenOpt} genOpt={genOpt} />
-            <TopPanel type={"languages"} />
-            <div className="container">
-                {showList}
+            <div className="toppanel">
+                <TopPanel type={"genres"} fn={setGenOpt} genOpt={genOpt} />
+                <TopPanel type={"languages"} />
+                <div className="container">
+                    {showList}
+                </div>
             </div>
         </>
     )

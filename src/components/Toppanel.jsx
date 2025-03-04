@@ -42,7 +42,7 @@ export default function TopPanel({type,fn,genOpt}){
 
     return(
        <>
-        <select value={genOpt} name={type} id={type} onChange={handleChange}>
+        <select className="select-container" value={genOpt} name={type} id={type} onChange={handleChange}>
         <option value="">Select {type}</option>    
            
        {type == "languages" ? genre.map((g)=>(
