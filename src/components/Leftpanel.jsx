@@ -11,7 +11,7 @@ export default function Leftpanel({ film, setFilm, tvShow, setTvShow }) {
         <>
             <nav>
                 <div className="leftpanel">
-                    <Link className="links" to='/all'>
+                    <Link className="links" to='/'>
                         <h4 >Films</h4>
                     </Link>
                     <Link className="links" to='/Tvshows'>
@@ -25,7 +25,7 @@ export default function Leftpanel({ film, setFilm, tvShow, setTvShow }) {
 
 
             <Routes>
-                <Route path="/all" element={<Allfilm film={film} setFilm={setFilm} />} />
+                <Route path="/" element={<Allfilm film={film} setFilm={setFilm} />} />
                 <Route path="/Tvshows" element={<Tvshow tvShow={tvShow} setTvShow={setTvShow} />} />
                 <Route path="/Watchlist" element={<Watchlist film={film} setFilm={setFilm} tvShow={tvShow} setTvShow={setTvShow} />} />
             </Routes>
@@ -61,25 +61,45 @@ function Allfilm({ film, setFilm }) {
 
     }
 
-    const movieList = film.map((f) => {
+    /* const movieList = film.map((f) => {
+         return (
+             <>
+                 <div className="list-container">
+                     {(movOpt != "") ? listing(f) : <div className="list">
+                         <img src={f.primaryImage} />
+                         <h4>{f.originalTitle}</h4>
+                         <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
+                     </div>}
+                 </div>
+             </>
+         )
+     })*/
+
+    const filtered = film.filter((t) => t.genres.includes(movOpt));
+
+    const movieList = (((movOpt != "")) ? filtered : film).map((t) => {
+
         return (
             <>
                 <div className="list-container">
-                    {(movOpt != "") ? listing(f) : <div className="list">
-                        <img src={f.primaryImage} />
-                        <h4>{f.originalTitle}</h4>
-                        <button className="favourite" onClick={() => moviefavHandle(f.id)}>Add to watchlist</button>
-                    </div>}
+                    <div className="list">
+                        <img className="image" src={t.primaryImage} />
+                        <h4>{t.originalTitle}</h4>
+                        <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
+                    </div>
                 </div>
             </>
         )
     })
 
+
     return (
         <>
             <div className="toppanel">
-                <TopPanel type={"genres"} fn={setMovOpt} genOpt={movOpt} />
-                <TopPanel type={"languages"} />
+                <div className="drop-down">
+                    <TopPanel type={"genres"} fn={setMovOpt} genOpt={movOpt} />
+                    <TopPanel type={"languages"} />
+                </div>
                 <div className="container">
                     {movieList}
                 </div>
@@ -184,7 +204,7 @@ function Tvshow({ tvShow, setTvShow }) {
             <>
                 <div className="list-container">
                     <div className="list">
-                        <img src={t.primaryImage} />
+                        <img className="image" src={t.primaryImage} />
                         <h4>{t.originalTitle}</h4>
                         <button className="favourite" onClick={() => tvfavHandle(t.id)}>Add to watchlist</button>
                     </div>

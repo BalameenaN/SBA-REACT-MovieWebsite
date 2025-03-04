@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 
-export default function TopPanel({type,fn,genOpt}){
+export default function TopPanel({ type, fn, genOpt }) {
 
     //console.log(type);
 
-    const[genre, setGenre] = useState([]);
+    const [genre, setGenre] = useState([]);
 
     //Generic function to fetch list of genres and language from API
     async function getGenre() {
@@ -30,31 +30,31 @@ export default function TopPanel({type,fn,genOpt}){
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getGenre();
-    },[]);
+    }, []);
 
-    function handleChange(e){
+    function handleChange(e) {
         console.log("inside handle function");
-         fn(e.target.value);
-         //console.log(genOpt);
+        fn(e.target.value);
+        //console.log(genOpt);
     }
 
-    return(
-       <>
-        <select className="select-container" value={genOpt} name={type} id={type} onChange={handleChange}>
-        <option value="">Select {type}</option>    
-           
-       {type == "languages" ? genre.map((g)=>(
+    return (
         <>
-        <option value={g.name}>{g.name}</option>
+            <select className="select-container" value={genOpt} name={type} id={type} onChange={handleChange}>
+                <option value="">Select {type}</option>
+
+                {type == "languages" ? genre.map((g) => (
+                    <>
+                        <option value={g.name}>{g.name}</option>
+                    </>
+                )) : genre.map((g) => (
+                    <>
+                        <option value={g}>{g}</option>
+                    </>
+                ))}
+            </select>
         </>
-         )): genre.map((g)=>(
-        <>
-        <option value={g}>{g}</option>
-        </>
-       ))}
-       </select>
-       </>
     )
 }

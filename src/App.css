@@ -1,10 +1,11 @@
-body{
-    background: linear-gradient(to right, #3494e6, #ec6ead); 
+body {
+    background: linear-gradient(to right, #3494e6, #ec6ead);
     color: white;
 }
+
 .img {
 
-    width: 150px;
+    width: 200px;
     height: 100px;
     margin: 0;
 }
@@ -40,19 +41,25 @@ body{
     align-items: center;
 
 }
-.header-right h3{
+
+.header-right h3 {
 
     margin: 5px 5px;
 
 }
 
 .list {
-    border: 1px solid red;
+
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.image {
+    width: 500px;
+    height: 400px;
 }
 
 .container {
@@ -66,53 +73,68 @@ body{
     border-radius: 5px;
 
 }
-.toppanel{
-    border: 1px solid green;
+
+.drop-down {
+    border: 1px solid red;
+    text-align: center;
+    padding: 5px 5px;
+    margin-bottom: 10px;
 
 }
-.main-container{
-    border: 1px solid blue;
+
+.main-container {
+
     display: flex;
 }
-.leftpanel{
-    border : 5px solid pink;
+
+.leftpanel {
+
     text-align: center;
     width: 150px;
-    
+    margin-top: 50px;
+
 }
+
 /*.list-container{
     border : 5px solid  orange;
 
 }*/
-.select-container{
+.select-container {
     width: 150px;
     margin: 7px 7px;
     background-color: transparent;
     border: 1px solid white;
-    border-radius : 10px;
+    border-radius: 10px;
     padding: 10px 10px;
     color: white;
-    
+    justify-content: center;
 
 }
-.select-container option{
-    background-color: rgb(188, 188, 247); 
+
+.select-container option {
+    background-color: rgb(188, 188, 247);
     opacity: 1;
-     padding: 5px 5px;
+    padding: 5px 5px;
 }
 
-.favourite{
+.favourite {
 
     background: transparent;
     border: 1px solid white;
-    padding : 7px 7px;
+    padding: 7px 7px;
     border-radius: 5px;
     color: white;
 
 }
-.links{
-    
-   
+
+.favourite:hover {
+    background-color: white;
+    color: pink;
+}
+
+.links {
+
+
     color: white;
     text-decoration: none;
 
